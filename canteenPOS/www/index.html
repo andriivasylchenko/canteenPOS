@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="POSController">
+
+    <ion-pane>
+      <ion-content>
+        <div class="row">
+          <div class="col col-67">
+            <div ng-repeat="piece in food">
+              <button class="button button-outline" ng-click="addItem(piece)">
+                {{piece.detail}}
+              </button>
+            </div>
+          </div>
+          <div class="col">
+
+            <div class="list">
+
+              <div class="item item-button-left" ng-repeat="o in order">
+                <button class="button button-clear button-assertive" ng-click="deleteItem($index)">
+                  <i class="icon ion-ios-close"></i>
+                </button>
+                {{o.item.detail}}
+                <span class="item-note">
+                  {{o.item.price}}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              Total: {{getSum()}}$
+            </div>
+            <div class="button-bar">
+              <a class="button button-outline button-assertive" ng-click="clearOrder()">Clear</a>
+              <a class="button button-outline button-balanced" ng-click="checkoutOrder()">Checkout</a>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </ion-content>
+    </ion-pane>
+    <script src="js/index.js"></script>
+  </body>
+</html>
