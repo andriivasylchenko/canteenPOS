@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-auto-height/dist/auto-height.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="POSController">
+
+    <ion-pane>
+      <ion-content class="dark-bg">
+        <div class="row" auto-height>
+          <div class="col col-67 padding fullHeight">
+
+            <div class="diningCol padding stable-bg">
+              <div class="menuPic button button-outline button-dark">
+                <img ng-src="img/{{currentMenu}}.jpg" />
+              </div>
+
+              <div class="menuCategory">
+                {{currentMenu}} menu
+              </div>
+            </div>
+
+            <div class="menuCol padding stable-bg">
+              <div class="menuTitle">
+                Main meal
+              </div>
+            <div class="buttonHolder" ng-repeat="piece in food | filter: {category: 'main'}">
+              <button class="button button-outline button-dark" ng-click="addItem(piece)">
+                <img ng-src="{{piece.img}}" />
+                <div class="buttonTitle">{{piece.detail}}</div>
+              </button>
+            </div>
+
+            <div class="menuTitle">
+              Side dishes
+            </div>
+          <div  class="buttonHolder" ng-repeat="piece in food | filter: {category: 'side'}">
+            <button class="button button-outline button-dark" ng-click="addItem(piece)">
+              <img ng-src="{{piece.img}}" />
+              <div class="buttonTitle">{{piece.detail}}</div>
+            </button>
+          </div>
+
+          <div class="menuTitle">
+            Beverages
+          </div>
+        <div  class="buttonHolder" ng-repeat="piece in food | filter: {category: 'beverage'}">
+          <button class="button button-outline button-dark" ng-click="addItem(piece)">
+            <img ng-src="{{piece.img}}" />
+            <div class="buttonTitle">{{piece.detail}}</div>
+          </button>
+        </div>
+
+          </div>
+          </div>
+          <div class="col padding fullHeight">
+            <div class="settingsCol padding stable-bg">
+              <div class="userPic button button-outline button-dark">
+                <img ng-src="img/richard.jpg" />
+              </div>
+
+              <div class="userInfo padding">
+                Brown
+                <p>Richard</p>
+              </div>
+
+              <div class="logoutHolder">
+                <button class="button button-icon icon ion-log-out assertive" ng-click="logout()"></button>
+              </div>
+
+            </div>
+
+            <div class="priceCol padding stable-bg">
+            <div class="list">
+
+              <div class="item item-button-left" ng-repeat="o in order">
+                <button class="button button-clear button-assertive" ng-click="deleteItem($index)">
+                  <i class="icon ion-ios-close"></i>
+                </button>
+                {{o.item.detail}}
+                <span class="item-note">
+                  {{o.item.price}}
+                </span>
+              </div>
+            </div>
+
+            <div class="emptyList" ng-hide="order.length">
+              Nothing ordered yet!
+            </div>
+
+            <div class="bottomStick padding">
+            <div class="totalCost" ng-show="order.length">
+              Total: {{getSum()}}$
+            </div>
+            <div class="button-bar">
+              <a class="button button-outline button-assertive" ng-click="clearOrder()" ng-disabled="!order.length">Clear</a>
+              <a class="button button-outline button-balanced" ng-click="checkoutOrder()" ng-disabled="!order.length">Checkout</a>
+            </div>
+          </div>
+          </div>
+          </div>
+
+        </div>
+
+
+      </ion-content>
+    </ion-pane>
+    <script src="js/index.js"></script>
+  </body>
+</html>

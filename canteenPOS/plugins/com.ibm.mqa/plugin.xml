@@ -1,0 +1,118 @@
+[<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.ibm.mqa"
+    version="3.0.12">
+    <engines>
+        <engine name="cordova" version=">=3.5" />
+        <engine name="cordova-android" version=">=3.5" />
+        <engine name="cordova-ios" version=">=3.5" />
+        <!--<engine name="worklight" version="1.0.0" platform="android" scriptSrc="worklight_version"/>-->
+    </engines>
+    <name>IBM MobileFirst Quality Assurance</name>
+    <description>IBM MobileFirst Quality Assurance Cordova Plugin</description>
+    <author>IBM</author>
+    <keywords>cordova,ibm,mobilefirst,mqa,quality,assurance</keywords>
+    <license>IBM</license>
+
+    <!--
+        The two files bellow will be added to `www/[target]` path
+        in application directory.
+
+        More at http://cordova.apache.org/docs/en/5.1.1/plugin_ref_spec.md.html#Plugin%20Specification
+
+        MQA.js - Main JS library, it contains bindings to Native SDK via cordova.exec call
+        tracekit.js - JS stacktrace library, used internally by MQA.js
+    -->
+    <asset src="js/tracekit.js" target="js/tracekit.js" />
+    <asset src="js/MQA.js" target="js/MQA.js" />
+
+    <!--
+        JS module injection via cordova plugin interface.
+
+        `clobber` indicates that the module.exports is inserted into the window object as window.some.value.
+        You can have as many <clobbers> as you like. Any object not available on window is created.
+
+        More at http://cordova.apache.org/docs/en/5.1.1/plugin_ref_spec.md.html#Plugin%20Specification
+    -->
+    <js-module src="js/tracekit.js" name="TraceKit">
+        <clobbers target="MQATrace" />
+    </js-module>
+    <js-module src="js/MQA.js" name="MQA">
+        <clobbers target="MQA" />
+    </js-module>
+
+    <!-- Android platform main configuration section -->
+    <platform name="android">
+        <!-- THE MOST IMPORTANT THING
+
+            Here we are telling cordova that native code libraries will provide
+            `com.ibm.mqa.MQAPlugin` class that extends CordovaPlugin and implements
+            it's methods.
+
+            It will be called via Cordova exec function with name `MQAPlugin`.
+        -->
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MQAPlugin">
+                <param name="android-package" value="com.ibm.mqa.MQAPlugin"/>
+            </feature>
+        </config-file>
+
+        <!-- The second most important part
+
+            Here we are copying Native SDK to as a dependent library.
+
+            This part can be omitted if Native SDK is included inside application via some other means.
+        -->
+        <framework src="src/android/MQA" custom="true"/>
+
+        <!-- Changes to AndroidManifest.xml required by Native SDK to work properly.
+
+            We need to add some Activities that Native SDK uses to display dialogs.
+        -->
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.ibm.mqa.ui.ProblemActivity" />
+            <activity android:name="com.ibm.mqa.ui.FeedbackActivity" />
+            <activity android:name="com.ibm.mqa.ui.ScreenshotEditorActivity" />
+        </config-file>
+
+        <!-- Permissions required by Native SDK -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <!-- Optional permission -->
+            <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
+    </platform>
+
+    <!-- Android platform main configuration section -->
+    <platform name="ios">
+        <!-- THE MOST IMPORTANT THING
+
+            Here we are telling cordova that native code framework will provide
+            `MQACordovaPlugin` class that extends CDVPlugin and implements
+            it's methods.
+
+            It will be called via Cordova exec function with name `MQAPlugin`.
+        -->
+        <config-file target="config.xml" parent="/*">
+            <feature name="MQAPlugin">
+                <param name="ios-package" value="MQACordovaPlugin"/>
+            </feature>
+        </config-file>
+
+        <!-- Native SDK framework, it's installed automatically by cordova -->
+        <framework src="src/ios/Q4M.framework" custom="true" />
+
+        <!-- Frameworks required by Q4M.framework -->
+        <framework src="QuartzCore.framework"/>
+        <framework src="AudioToolbox.framework"/>
+        <framework src="CoreLocation.framework"/>
+        <framework src="SystemConfiguration.framework"/>
+        <framework src="Security.framework"/>
+        <framework src="AssetsLibrary.framework"/>
+        <framework src="CoreMotion.framework"/>
+        <framework src="CoreTelephony.framework"/>
+        <framework src="CoreText.framework"/>
+    </platform>
+</plugin>
