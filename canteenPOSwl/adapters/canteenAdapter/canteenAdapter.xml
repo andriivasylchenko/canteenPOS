@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed Materials - Property of IBM
+    5725-I43 (C) Copyright IBM Corp. 2011, 2013. All Rights Reserved.
+    US Government Users Restricted Rights - Use, duplication or
+    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+-->
+<wl:adapter name="canteenAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+
+	<displayName>canteenAdapter</displayName>
+	<description>canteenAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>https</protocol>
+			<domain>34967694-ec02-4437-ae17-2e00ec310af0-bluemix.cloudant.com</domain>
+			<port>443</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<authentication>
+            <basic/>
+                <serverIdentity>
+                    <username>34967694-ec02-4437-ae17-2e00ec310af0-bluemix</username>
+                    <password>a30a82af5903a316f7adb1f6ebd083c89cb09d232a5226686911414ea0058f7f</password>
+                </serverIdentity>
+        </authentication>
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+			<sslCertificateAlias></sslCertificateAlias>
+			<sslCertificatePassword></sslCertificatePassword>
+			-->
+		</connectionPolicy>
+	</connectivity>
+
+	<procedure name="getMenu"/>
+	<procedure name="addOrder"/>
+	<procedure name="getOrders"/>
+</wl:adapter>

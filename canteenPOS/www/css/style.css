@@ -1,0 +1,177 @@
+.menuCol {
+    min-height: 560px;
+    height: calc(100% - 123px);
+}
+
+.diningCol {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.settingsCol {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.priceCol {
+    position: relative;
+    min-height: 560px;
+    height: calc(100% - 123px);
+}
+
+.priceCol .list {
+    margin: 5px;
+}
+
+.menuCol .button {
+    height: 120px;
+    width: 145px;
+    margin: 5px;
+    padding-top: 75px;
+    text-align: right;
+    z-index: 5;
+}
+
+.menuCol .button img{
+    height: 110px;
+    width: 135px;
+    position: absolute;
+    z-index: 2;
+    left: 4px;
+    top: 4px;
+}
+
+.menuCol .button .buttonTitle {
+  left: -12px;
+  width: 143px;
+  padding-right: 10px;
+  color: white;
+  position: inherit;
+  z-index: 3;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )!important;
+}
+
+.buttonHolder {
+  display:inline-block;
+}
+
+.totalCost {
+  height: 40px;
+  text-align: right;
+  margin-right: 15px;
+  color: #aaa;
+  font-size: 20px;
+}
+
+.emptyList {
+  height: 50px;
+  text-align: center;
+  color: #aaa;
+  font-size: 20px;
+}
+
+.order {
+  height: 50px;
+  color: #aaa;
+  font-size: 20px;
+  margin: 15px 10px -15px;
+}
+
+.menuTitle {
+  height: 45px;
+  color: #aaa;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.menuCategory {
+  font-size: 20px;
+  display:inline-block;
+  position:absolute;
+  margin-top: 27px;
+  margin-left: 15px;
+  width: 170px;
+}
+
+.userPic {
+  height: 70px;
+  width: 70px;
+  margin: 5px;
+  display:inline-block;
+}
+
+.userPic img{
+  height: 60px;
+  width: 60px;
+  left: -8px;
+  top: 4px;
+  position: inherit;
+}
+
+.menuPic {
+  height: 70px;
+  width: 145px;
+  margin: 5px;
+  display:inline-block;
+}
+
+.menuPic img{
+  height: 60px;
+  width: 135px;
+  left: -8px;
+  top: 4px;
+  position: inherit;
+}
+
+
+.userInfo {
+  display:inline-block;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.userInfo p {
+  font-size: 15px;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+.logoutHolder {
+  display:inline-block;
+  position: absolute;
+  right:22px;
+  top: 40px;
+}
+
+.dateTime {
+  margin-top: -75px;
+  text-align: right;
+  position: relative;
+  width: 100%;
+}
+
+.dateTime span{
+  color: black;
+  font-size: 20px;
+}
+
+.dateTime p {
+  font-size: 15px;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.bottomStick {
+  position: absolute;
+  bottom: 5px;
+  margin-left: -5px;
+  width: calc(100% - 10px);
+  vertical-align: bottom;
+}

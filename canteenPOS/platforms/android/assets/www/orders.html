@@ -1,0 +1,15 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Past orders</h1>
+  </ion-header-bar>
+  <ion-content>
+
+  <a class="item" href="#" ng-repeat="order in pastOrders">
+   Order # {{order.json.doc.order}}
+   <span class="item-note">
+     {{order.json.doc.cost}}
+   </span>
+ </a>
+
+  </ion-content>
+</ion-modal-view>

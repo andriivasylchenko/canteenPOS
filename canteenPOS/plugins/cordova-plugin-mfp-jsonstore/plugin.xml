@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed Materials - Property of IBM
+			 5725-I43 (C) Copyright IBM Corp. 2015. All Rights Reserved.
+			 US Government Users Restricted Rights - Use, duplication or
+       disclosure restricted by GSA ADP Schedule Contract with IBM Corp. 
+ -->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:rim="http://www.blackberry.com/ns/widgets"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="cordova-plugin-mfp-jsonstore"
+  version="7.1.0">
+  <name>IBM MobileFirst Platform Foundation - JSONStore</name>
+  <description>IBM MobileFirst Platform Foundation Cordova Plugin JSONStore</description>
+  <license>IBM</license>
+  <keywords>cordova,ibm,worklight,mobilefirst,mfp,jsonstore</keywords>
+  <repo>https://www.ibm.com/mobilefirst</repo>
+  <issue>https://www.ibm.com/mobilefirst</issue>
+  
+  <engines>
+    <engine name="cordova-android" version=">=3.6.4 <4" />
+    <engine name="cordova-ios" version=">=3.7.0 <4" />
+    <engine name="cordova-plugman" version=">=5.0.0" />
+  </engines>
+
+  <dependency id="cordova-plugin-mfp" />
+  
+
+  <platform name="android">
+    
+    <js-module src="bootstrap.js" name="jsonstore">
+       <runs/>
+    </js-module>
+    
+    <asset src="www/worklight/jsonstore.js" target="worklight/jsonstore.js" />
+
+    <resource-file src="src/android/assets/icudt46l.zip" target="assets/icudt46l.zip" />
+    
+    <resource-file src="src/android/libs/armeabi/libdatabase_sqlcipher.so" target="libs/armeabi/libdatabase_sqlcipher.so" />
+    <resource-file src="src/android/libs/armeabi-v7a/libdatabase_sqlcipher.so" target="libs/armeabi-v7a/libdatabase_sqlcipher.so" />
+    <resource-file src="src/android/libs/x86/libdatabase_sqlcipher.so" target="libs/x86/libdatabase_sqlcipher.so" />
+    
+    <resource-file src="src/android/libs/armeabi/libopenssl_fips.so" target="libs/armeabi/libopenssl_fips.so" />
+    <resource-file src="src/android/libs/armeabi-v7a/libopenssl_fips.so" target="libs/armeabi-v7a/libopenssl_fips.so" />
+    <resource-file src="src/android/libs/x86/libopenssl_fips.so" target="libs/x86/libopenssl_fips.so" />
+    
+    <resource-file src="src/android/libs/armeabi/libsqlcipher_android.so" target="libs/armeabi/libsqlcipher_android.so" />
+    <resource-file src="src/android/libs/armeabi-v7a/libsqlcipher_android.so" target="libs/armeabi-v7a/libsqlcipher_android.so" />
+    <resource-file src="src/android/libs/x86/libsqlcipher_android.so" target="libs/x86/libsqlcipher_android.so" />
+    
+    <resource-file src="src/android/libs/armeabi/libstlport_shared.so" target="libs/armeabi/libstlport_shared.so" />
+    <resource-file src="src/android/libs/armeabi-v7a/libstlport_shared.so" target="libs/armeabi-v7a/libstlport_shared.so" />
+    <resource-file src="src/android/libs/x86/libstlport_shared.so" target="libs/x86/libstlport_shared.so" />
+
+  
+    <lib-file src="src/android/libs/sqlcipher.jar" />
+    
+  </platform>
+  
+  <platform name="ios">
+
+    <js-module src="bootstrap.js" name="jsonstore">
+       <runs/>
+    </js-module>
+    
+    <asset src="www/worklight/jsonstore.js" target="worklight/jsonstore.js" />
+    
+  </platform>
+
+</plugin>
